@@ -16,6 +16,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.2.6"
+  s.add_dependency "capistrano"
+  s.add_dependency "capistrano-ext"
 
   s.add_development_dependency "sqlite3"
 end

@@ -1,2 +1,1 @@
-module DomainFactory
-end
+require 'domain_factory/engine'
