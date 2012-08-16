@@ -1,0 +1,26 @@
+customer_number: 
+git:
+  repository: 
+ssh:
+  deploy_host: 
+  username: 
+  password: 
+app:
+  name: 
+capistrano:
+  default_stage: 
+  stages:
+    - staging 
+    - production
+staging:
+  database:
+    host: 
+    name: 
+    username: 
+    password: 
+production:
+  database:
+    host: 
+    name: 
+    username: 
+    password:  

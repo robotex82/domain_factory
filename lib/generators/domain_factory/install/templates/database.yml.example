@@ -1,0 +1,49 @@
+<%
+require 'yaml'
+
+domain_factory = YAML::load(File.open(Rails.root + 'config/domain_factory.yml'))
+%>
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+staging:
+  adapter: mysql
+  host: <%= domain_factory['staging']['database']['host'] %>
+  encoding: utf8
+  reconnect: false
+  database: <%= domain_factory['staging']['database']['name'] %>
+  pool: 5
+  username: <%= domain_factory['staging']['database']['username'] %>
+  password: <%= domain_factory['staging']['database']['password'] %>
+  socket: /var/run/mysqld/mysqld.sock
+
+production:
+  adapter: mysql
+  host: <%= domain_factory['production']['database']['host'] %>
+  encoding: utf8
+  reconnect: false
+  database: <%= domain_factory['production']['database']['name'] %>
+  pool: 5
+  username: <%= domain_factory['production']['database']['username'] %>
+  password: <%= domain_factory['production']['database']['password'] %>
+  socket: /var/run/mysqld/mysqld.sock
+
+cucumber:
+  <<: *test
